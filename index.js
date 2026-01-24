@@ -36,17 +36,17 @@ const THEME = {
 const TICKET_TYPES = {
     pr: {
         label: "Public Relation",
-        description: "Use these to contact our Public Relations team and request an event or form an Alliance with Us!",
+        description: "Use these to contact our Public Relations team! Event or Alliance!",
         channelPrefix: "pr"
     },
     staffing: {
         label: "Staffing Support",
-        description: "Open these Support Tickets for Appeals or Ranking Requests/Problems! You can also report players with this.",
+        description: "Open these Support Tickets for Appeals, Ranking, And appeals!.",
         channelPrefix: "staffing"
     },
     general: {
         label: "General Support",
-        description: "Open this Support Ticket for any General Questions that do not fall under any of these categories!",
+        description: "Open this Support Ticket for inquiries NOT under these categorys!",
         channelPrefix: "general"
     }
 };
