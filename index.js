@@ -93,19 +93,19 @@ client.on("messageCreate", async (message) => {
         if (activeTickets.has(message.author.id)) return;
 
         const embed = new EmbedBuilder()
-            .setTitle("📬 Open a Ticket")
-            .setDescription("Do you want to open a support ticket?")
+            .setTitle("📬 OPEN A THREAD")
+            .setDescription("Thank you for using our support system! But before this thread is created, do you want to open a support ticket?")
             .setColor(THEME.colorPrimary)
             .setFooter({ text: THEME.footerText });
 
         const row = new ActionRowBuilder().addComponents(
             new ButtonBuilder()
                 .setCustomId("confirm_ticket")
-                .setLabel("Open Ticket")
+                .setLabel("✔️")
                 .setStyle(ButtonStyle.Success),
             new ButtonBuilder()
                 .setCustomId("cancel_ticket")
-                .setLabel("Cancel")
+                .setLabel("✖️")
                 .setStyle(ButtonStyle.Danger)
         );
 
@@ -137,7 +137,7 @@ client.on("messageCreate", async (message) => {
 
         const embed = new EmbedBuilder()
             .setTitle("❄️ ModMail Frozen")
-            .setDescription("The bot will no longer take new ModMail requests.")
+            .setDescription("The bot will no longer take new ModMail requests. To turn them back on, use the unfreeze command!")
             .setColor(THEME.colorError)
             .setFooter({ text: THEME.footerText });
 
@@ -160,7 +160,7 @@ client.on("messageCreate", async (message) => {
 
         const embed = new EmbedBuilder()
             .setTitle("🔥 ModMail Unfrozen")
-            .setDescription("The bot is now accepting ModMail requests again.")
+            .setDescription("The bot is now accepting ModMail requests again. To freeze them again, use the mmfreeze command!")
             .setColor(THEME.colorSuccess)
             .setFooter({ text: THEME.footerText });
 
@@ -227,7 +227,7 @@ client.on("messageCreate", async (message) => {
 
         const staffEmbed = new EmbedBuilder()
             .setColor(THEME.colorError)
-            .setDescription("Closing ticket in **5 seconds**…")
+            .setDescription("This ticket will be closing in **5 seconds**…")
             .setFooter({ text: THEME.footerText });
 
         await user.send({ embeds: [userEmbed] });
@@ -301,7 +301,7 @@ client.on("messageCreate", async (message) => {
 
         const embed = new EmbedBuilder()
             .setColor(THEME.colorPrimary)
-            .setTitle("🔄 Ticket Type Transferred")
+            .setTitle("🔄 Ticket Transferred")
             .addFields(
                 { name: "User", value: `${user.tag} (${user.id})` },
                 { name: "New Type", value: newTypeData.label }
@@ -328,13 +328,13 @@ client.on("messageCreate", async (message) => {
 
         const userEmbed = new EmbedBuilder()
             .setTitle("🤝 CONNECTED")
-            .setDescription("A staff member has connected to your ticket and will assist you shortly.")
+            .setDescription("A staff member has connected to your ticket and will assist you shortly. If you haven't already, please state the reason of your ticket opening!")
             .setColor(THEME.colorPrimary)
             .setFooter({ text: THEME.footerText });
 
         const staffEmbed = new EmbedBuilder()
             .setTitle("🔗 USER CONNECTED")
-            .setDescription(`You are now connected with **${user.tag}**.`)
+            .setDescription(`You are now connected with support with **${user.tag}**.`)
             .setColor(THEME.colorSuccess)
             .setFooter({ text: THEME.footerText });
 
@@ -354,7 +354,7 @@ client.on("interactionCreate", async (interaction) => {
     /* CONFIRM TICKET */
     if (interaction.customId === "confirm_ticket") {
         const embed = new EmbedBuilder()
-            .setTitle("🎫 Select Ticket Type")
+            .setTitle("🎫 SELECT THREAD TYPE")
             .setDescription("Choose the type of ticket you want to open.")
             .setColor(THEME.colorPrimary)
             .setFooter({ text: THEME.footerText });
@@ -410,7 +410,7 @@ client.on("interactionCreate", async (interaction) => {
         });
 
         const infoEmbed = new EmbedBuilder()
-            .setTitle("📬 New Ticket Opened")
+            .setTitle("📬 NEW THREAD")
             .setColor(THEME.colorPrimary)
             .addFields(
                 { name: "User", value: `${user.tag} (${user.id})` },
@@ -456,7 +456,7 @@ client.on("interactionCreate", async (interaction) => {
         if (data.claimedBy && data.claimedBy !== interaction.user.id) {
             const embed = new EmbedBuilder()
                 .setColor(THEME.colorError)
-                .setDescription("This ticket is already claimed by another staff member.")
+                .setDescription("This ticket is already claimed by another staff member. If the member unclaims it, you will be allowed to claim it.")
                 .setFooter({ text: THEME.footerText });
             return interaction.reply({ embeds: [embed], ephemeral: true });
         }
@@ -466,7 +466,7 @@ client.on("interactionCreate", async (interaction) => {
 
         const embed = new EmbedBuilder()
             .setColor(THEME.colorSuccess)
-            .setTitle("✅ Ticket Claimed")
+            .setTitle("✅ THREAD CLAIMED")
             .setDescription(`This ticket has been claimed by **${interaction.user.tag}**.`)
             .setFooter({ text: THEME.footerText });
 
@@ -495,7 +495,7 @@ client.on("interactionCreate", async (interaction) => {
 
         const embed = new EmbedBuilder()
             .setColor(THEME.colorPrimary)
-            .setTitle("♻ Ticket Unclaimed")
+            .setTitle("♻ THREAD UNCLAIMED")
             .setDescription(`This ticket has been unclaimed by **${interaction.user.tag}**.`)
             .setFooter({ text: THEME.footerText });
 
